@@ -5,7 +5,6 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { analytics } from "../utils/firebase";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -36,7 +35,6 @@ const Login = () => {
         });
     } else {
       // sign In Code
-      analytics.logEvent('button_click', { button_name: 'sign_in' });
       signInWithEmailAndPassword(auth, email.current.value, password.current.value)
         .then((userCredential) => {
           // Signed in
